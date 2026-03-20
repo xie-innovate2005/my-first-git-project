@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从代码到实物：造你所想 - 学习日志</title>
+    <style>
+        /* CSS 样式与排版 */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #0f1724; position: relative; }
+        header { 
+            background: linear-gradient(135deg, #1c2833 0%, #2c3e50 40%, #16a085 100%);
+            color: #fff; 
+            text-align: center; 
+            padding: 3.5rem 1rem 3rem; 
+            position: relative;
+            overflow: hidden;
+        }
+        header::after {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            top: -80px;
+            right: -60px;
+            filter: blur(1px);
+        }
+        header h1 { margin: 0 0 10px 0; font-size: 2.4rem; letter-spacing: 2px; }
+        header p { margin: 0; opacity: 0.9; font-size: 1.1rem; letter-spacing: 1px; }
+        
+        nav { background: #34495e; color: #fff; padding: 15px 0; text-align: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.2); backdrop-filter: blur(6px); }
+        nav a { color: #ecf0f1; text-decoration: none; margin: 0 20px; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #1abc9c; }
+        
+        .container { max-width: 980px; margin: 30px auto; padding: 0 20px 60px; }
+        section { background: rgba(255,255,255,0.98); padding: 40px; margin-bottom: 30px; border-radius: 18px; box-shadow: 0 22px 45px rgba(15,23,36,0.35); backdrop-filter: blur(10px); }
+        
+        h2 { border-bottom: 3px solid #1abc9c; padding-bottom: 10px; color: #2c3e50; margin-top: 0; }
+        h3 { color: #34495e; border-left: 4px solid #3498db; padding-left: 10px; margin-top: 25px; }
+        p { text-align: justify; margin-bottom: 15px; color: #555; font-size: 1.05rem; }
+
+        /* 图片与视频预留位（占位符）的样式 */
+        .media-placeholder { 
+            background: #ecf0f1; 
+            border: 2px dashed #bdc3c7; 
+            border-radius: 6px; 
+            padding: 40px 20px; 
+            text-align: center; 
+            color: #7f8c8d; 
+            margin: 20px 0; 
+            font-size: 0.95rem;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 200px; 
+            transition: all 0.3s;
+        }
+        .media-placeholder:hover { background: #e0e6ed; border-color: #95a5a6; }
+        .media-placeholder.video { min-height: 250px; background: #e8eaed; border: 2px dotted #95a5a6; }
+        .media-placeholder.video::before { content: '▶ '; font-size: 1.2rem; margin-right: 5px; }
+
+        /* 团队标签 */
+        .team-tag { display: inline-block; background: #1abc9c; color: white; padding: 5px 12px; border-radius: 4px; font-size: 0.9em; margin-bottom: 15px; font-weight: bold; }
+        
+        /* 技能标签 */
+        .skill-tags {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-tag {
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(26, 188, 156, 0.12);
+            color: #16a085;
+            font-size: 0.85rem;
+            border: 1px solid rgba(22,160,133,0.4);
+            backdrop-filter: blur(6px);
+        }
+
+        /* 课程时间线 */
+        .timeline {
+            margin-top: 20px;
+            border-left: 3px solid #1abc9c;
+            padding-left: 18px;
+        }
+        .timeline-item {
+            margin-bottom: 18px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -11px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1abc9c;
+            box-shadow: 0 0 0 4px rgba(26,188,156,0.18);
+        }
+        .timeline-item span {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 3px;
+        }
+        .timeline-item strong {
+            display: block;
+            color: #2c3e50;
+        }
+
+        /* 回到顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 25px;
+            background: #1abc9c;
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+            opacity: 0.9;
+        }
+        .back-to-top:hover {
+            opacity: 1;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 粒子背景 Canvas */
+        #particles-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(circle at top, #1f2937 0, #020617 55%, #000 100%);
+        }
+
+        .footer { text-align: center; padding: 30px; color: #7f8c8d; font-size: 0.9em; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(15,23,36,0.9); color: #e5e7eb; }
+    </style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    <header id="top">
+        <h1>从代码到实物：造你所想</h1>
+        <p>探索虚拟与现实的边界 —— 谢傲宇的创客学习日志 · HTMLLOG</p>
+    </header>
+
+    <!-- 导航栏方便跳转阅读 -->
+    <nav>
+        <a href="#about">个人介绍</a>
+        <a href="#process">日常课程与DIY</a>
+        <a href="#midterm">中期创客项目</a>
+        <a href="#final">期末创新项目</a>
+        <a href="#summary">总结与思考</a>
+    </nav>
+
+    <div class="container">
+        <!-- 第1部分：个人介绍 -->
+        <section id="about">
+            <h2>个人介绍 | About Me</h2>
+            <p>你好！我是<strong>谢傲宇</strong>，一名对硬件交互和创意编程充满热情的学习者。在加入《从代码到实物：造你所想》这门课程之前，我的世界大部分是由屏幕里纯粹的代码逻辑构成的。但我始终相信，“造物”是令人兴奋的浪漫本能。</p>
+            <p>在这里，我希望通过开源电子硬件（如 Arduino 等）、3D建模打印和传感器技术，亲手将我的奇思妙想从代码的虚拟宇宙带入真实的物理世界。这个 Weblog（HTMLLOG）将作为我全流程记录学习与踩坑历程的见证，并通过 Git 进行严谨的版本管理。</p>
+            <div class="skill-tags">
+                <span class="skill-tag">HTML5 / CSS3 手写页面</span>
+                <span class="skill-tag">Git 版本控制</span>
+                <span class="skill-tag">3D 建模与打印</span>
+                <span class="skill-tag">嵌入式 C/C++ 编程</span>
+                <span class="skill-tag">传感器与电路调试</span>
+                <span class="skill-tag">人机交互设计</span>
+            </div>
+            <h3>创作审美与设计方向</h3>
+            <p>在网页设计上，我更倾向于干净克制的科技感风格——使用少量高饱和度点缀色配合大面积留白，搭配柔和的阴影和微妙的动效，让读者可以在安静的阅读体验中感受到技术的张力。页面底部的粒子背景，象征着代码中的离散“比特”汇聚成现实世界中可见可触的作品。</p>
+            <p>无论是焊接电路、调整 3D 模型的倒角，还是为网页上的每一个像素选色，我都希望它们是“有温度”的。这份 HTMLLOG 不只是作业文档，而是我在 2026 春天这一段成长轨迹的数字化纪念。</p>
+        </section>
+
+        <!-- 第2部分：课程过程与日常DIY成果 -->
+        <section id="process">
+            <h2>课程过程与DIY成果 | Course Process & Daily DIY</h2>
+            
+            <h3>课程进度一览（节选）</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span>第1周 · 2026-03-03 / 03-04</span>
+                    <strong>概述 &amp; GIT + HTMLLOG 实践</strong>
+                    完成本 weblog 的初始搭建与 Git 仓库初始化，为后续所有作品建立统一的数字学习档案。
+                </div>
+                <div class="timeline-item">
+                    <span>第2–3周 · 3D建模与3D打印</span>
+                    <strong>从立方体到复杂曲面外壳</strong>
+                    练习参数化建模，输出 STL 文件并完成多次切片与打印调参，逐步优化结构强度与外观质量。
+                </div>
+                <div class="timeline-item">
+                    <span>第4–6周 · 嵌入式计算与电子制作</span>
+                    <strong>从点亮 LED 到传感器网络</strong>
+                    搭建基础电路、调试传感器与执行机构，为中期和期末创客项目夯实技术基础。
+                </div>
+            </div>
+            
+            <h3>阶段一：点亮第一盏“灯”与基础电路</h3>
+            <p>这是我初次接触微控制器。虽然只是让开发板输出高低电平，但当看到 LED 灯在面包板上随着我编写的 C++ 循环代码规律闪烁时，那种“掌控物理世界”的奇妙感觉令人难以忘怀。我还学习了如何计算电阻阻值以防止元件烧毁。</p>
+            <div class="media-placeholder">
+                [图片预留：拍摄的开发板与面包板基础连线特写图]
+            </div>
+
+            <h3>阶段二：传感器控制与3D外壳建模初探</h3>
+            <p>本周尝试了通过光敏电阻传感器来控制伺服电机（舵机）的转动角度。同时，利用参数化建模软件为电机设计了一个简单的固定支架，并使用实验室的 FDM 3D打印机打印成型。打印过程耗时两小时，虽然表面有些拉丝，但尺寸刚好契合。</p>
+            <div class="media-placeholder">
+                [图片预留：3D打印机正在工作时的照片 或 打印出的外壳成品图]
+            </div>
+            <div class="media-placeholder video">
+                [视频预留：用手遮挡光线驱动电机转动的演示视频 (约10-15秒)]
+            </div>
+            
+            <h3>阶段三：从课堂练习到小型自发项目</h3>
+            <p>在完成课程规定的练习之后，我开始把学到的内容应用到一些小型自发项目中：例如为寝室制作一个“环境氛围灯控制器”，可以通过旋钮调节色温与亮度，并预设“学习模式”“休闲模式”等不同场景。一开始电源噪声和线路干扰导致灯带闪烁不稳定，经过多次布线与滤波电路的调整，最终达到了肉眼几乎无频闪的效果。</p>
+            <div class="media-placeholder">
+                [图片预留：寝室氛围灯在不同色温模式下的对比照片]
+            </div>
+        </section>
+
+        <!-- 第3部分：中期创客项目 -->
+        <section id="midterm">
+            <h2>中期创客项目 | Mid-term Project</h2>
+            <div class="team-tag">团队名称：奇思妙想工坊</div>
+            <p><strong>团队介绍：</strong>我们的团队由3名成员组成，分别负责系统逻辑编写、硬件电路焊接与外部结构设计。我们在分工协作中碰发出了很多有趣的火花。</p>
+            
+            <h3>项目名称：非接触式极简交互台灯</h3>
+            <p><strong>项目简介：</strong>这是一个不需要触碰就能开关和调节亮度的桌面台灯。我们利用了超声波模块实时检测手部距离：快速挥手判定为开关命令，手掌悬停的高度则通过算法映射为 PWM 波，进而无级调节 LED 灯带的亮度。外壳采用了激光切割的亚克力板结合木质底座。</p>
+            
+            <p>中期项目组装记录与最终效果如下：</p>
+            <div class="media-placeholder">
+                [图片预留：台灯内部线路排布设计图 或 散件组装图]
+            </div>
+            <div class="media-placeholder">
+                [图片预留：台灯成品放在桌面上的多角度展示图]
+            </div>
+            <div class="media-placeholder video">
+                [视频预留：演示用户通过手势上下移动来调节光线亮度的操作视频]
+            </div>
+        </section>
+
+        <!-- 第4部分：期末创新项目 -->
+        <section id="final">
+            <h2>期末创新项目 | Final Innovation Project</h2>
+            <div class="team-tag">团队名称：次元跃迁者 (全员4人)</div>
+            <p><strong>团队介绍：</strong>基于中期积累的配合默契，除了原本的核心配置，我们还邀请了一名擅长前端界面的伙伴加入，负责为项目定制专属的网页数据看板与上位机控制端。</p>
+
+            <h3>项目名称：全自动智能生态微景观植物舱</h3>
+            <p><strong>项目简介：</strong>在此次期末终极挑战中，我们打造了一个闭环的植物自动照料系统。生态舱集成了温湿度传感器、环境光传感器以及微型水泵。当土壤极度干燥时，系统判定并自动启动水泵滴灌；光线不足时，自动开启全光谱植物灯补偿补光。同时，设备通过 Wi-Fi 芯片将实时遥测数据上传至局域网控制台，实现了“软硬结合，物联造物”。</p>
+
+            <div class="media-placeholder">
+                [图片预留：复杂的传感器布线、水管走线与主板调试过程特写图]
+            </div>
+            <div class="media-placeholder">
+                [图片预留：玻璃植物生态舱搭配氛围灯光的最终成型定妆照]
+            </div>
+            <div class="media-placeholder video">
+                [视频预留：从网页控制台点击强制施水，实体水泵立刻响应的完整端到端测试视频]
+            </div>
+        </section>
+
+        <!-- 第5部分：总结与思考 -->
+        <section id="summary">
+            <h2>课程总结和思考 | Summary & Reflections</h2>
+            <p>随着期末生态舱项目的顺利落幕，《从代码到实物：造你所想》这门课也画上了圆满的句号。回顾这段从零基础到最终交付实物的历程，我的收获远超预期。</p>
+            <p>我深刻体会到了**“硬件调试远不如纯软件理想化”**。在写纯粹的代码时，bug 往往只存在于逻辑中；但在软硬件结合的项目中，故障可能源于虚假的跳线接触不良、供电电压的轻微波动，或者是传感器的批次误差。每一次“通电测试”都充满了不确定性。但正是这种从排查线路、烧录程序到成功运转的过程，赋予了工程师无可比拟的成就感。</p>
+            <p>这门课不仅仅交给了我 C++ 编程、电子电路焊接或是 3D 建模切片的具体技能，更重要的是塑造了我**将抽象概念切实落地为物理产品**的系统化思维。“代码是灵魂，实体是骨架”，通过这门课程，“造我所想”不再是一句简单的口号，而变成了我真实掌握的一种创新能力。</p>
+        </section>
+    </div>
+
+    <!-- 页脚版权与信息 -->
+    <div class="footer">
+        &copy; 2026 基于 Git 版本控制管理 · 《从代码到实物：造你所想》专属学习日志<br>
+        <i>*使用 HTML5 与 CSS 手工打造*</i>
+    </div>
+
+    <a href="#top" class="back-to-top">回到顶部 ↑</a>
+
+    <script>
+        // 简单粒子背景渲染（原生 JS）
+        (function () {
+            const canvas = document.getElementById('particles-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height, particles;
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                initParticles();
+            }
+
+            function initParticles() {
+                const count = Math.floor((width * height) / 18000);
+                particles = [];
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        vx: (Math.random() - 0.5) * 0.4,
+                        vy: (Math.random() - 0.5) * 0.4,
+                        r: 1 + Math.random() * 1.5,
+                        alpha: 0.3 + Math.random() * 0.4
+                    });
+                }
+            }
+
+            function step() {
+                ctx.clearRect(0, 0, width, height);
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0 || p.x > width) p.vx *= -1;
+                    if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                    ctx.beginPath();
+                    const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
+                    gradient.addColorStop(0, 'rgba(148, 163, 184,' + p.alpha + ')');
+                    gradient.addColorStop(1, 'rgba(15,23,42,0)');
+                    ctx.fillStyle = gradient;
+                    ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                requestAnimationFrame(step);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            requestAnimationFrame(step);
+        })();
+    </script>
+</body>
+</html>
