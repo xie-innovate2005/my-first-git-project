@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D设计与3D打印文创作品开发</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="eyebrow">HTML日志 / 3D设计与3D打印</p>
+      <h1>百卅交大 · 印刻初心</h1>
+      <p class="lead">
+        以西南交通大学130周年校庆为主题，将“1896 - 2026”“西南交通大学”“130周年校庆”等文字元素融入
+        六边形组合笔筒，完成从建模、导出、切片到实物打印的完整文创作品开发记录。
+      </p>
+      <div class="hero__meta">
+        <span>作品类型：功能性文创</span>
+        <span>核心形式：组合式六边形笔筒</span>
+        <span>提交形式：HTML日志 + 模型文件 + 实物照片</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <aside class="toc">
+      <h2>目录</h2>
+      <a href="#overview">项目概述</a>
+      <a href="#requirements">要求对应</a>
+      <a href="#idea">设计思路</a>
+      <a href="#modeling">建模过程</a>
+      <a href="#gallery">过程与成品</a>
+      <a href="#printing">打印分析</a>
+      <a href="#improve">改进方向</a>
+      <a href="#files">提交文件</a>
+    </aside>
+
+    <div class="content">
+      <section id="overview" class="section">
+        <h2>项目概述</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>项目背景</h3>
+            <p>
+              根据“百卅交大·印刻初心”主题要求，本次作品需要兼顾交大特色、纪念意义与3D打印可实现性。
+              我选择将校庆文字与桌面收纳功能结合，做成一个适合日常使用的文创笔筒。
+            </p>
+          </article>
+          <article class="card">
+            <h3>作品亮点</h3>
+            <p>
+              整体采用多单元六边形拼接结构，造型稳定，视觉上有蜂巢式聚合感；前侧加入校庆相关浮雕文字，
+              兼顾纪念属性与识别度。
+            </p>
+          </article>
+          <article class="card">
+            <h3>模型尺寸</h3>
+            <p>
+              根据现有 STL 模型测得整体包络尺寸约为 <strong>66.56 mm × 45.00 mm × 41.93 mm</strong>，
+              明显满足单件不超过 200 mm × 200 mm × 200 mm 的尺寸限制。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="requirements" class="section">
+        <h2>作业要求对应</h2>
+        <div class="checklist">
+          <div class="checklist__item">
+            <strong>交大特色</strong>
+            <p>作品文字中融入“西南交通大学”“1896”“2026”“130周年校庆”等校庆元素，主题明确。</p>
+          </div>
+          <div class="checklist__item">
+            <strong>3D建模文件</strong>
+            <p>已包含 SolidWorks 源文件 <code>笔筒.SLDPRT</code> 和打印模型文件 <code>笔筒.STL</code>。</p>
+          </div>
+          <div class="checklist__item">
+            <strong>模型截图 / 渲染图</strong>
+            <p>已整理建模视图、切片视图与结构截图，用于展示建模结构与打印准备过程。</p>
+          </div>
+          <div class="checklist__item">
+            <strong>打印成品照片</strong>
+            <p>已保留多张实物照片，可清楚展示整体造型、内部空间、表面质量与文字效果。</p>
+          </div>
+          <div class="checklist__item">
+            <strong>工艺可行性</strong>
+            <p>结构为一体成型小尺寸件，满足桌面级 3D 打印需求，打印流程清晰，后续仍有细节优化空间。</p>
+          </div>
+          <div class="checklist__item">
+            <strong>HTML日志入口</strong>
+            <p>本页面位于 <code>/html/index.html</code>，符合截图中的入口要求。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="idea" class="section">
+        <h2>设计思路</h2>
+        <p>
+          在创意阶段，我希望作品不要只是单纯摆件，而是要兼顾“纪念性”和“功能性”。因此最终决定做一个
+          多仓位笔筒：高仓可放笔、马克笔或剪刀，低仓可以放回形针、U盘、橡皮或便签夹。这样既契合文创作品
+          的展示属性，也能真正用于日常桌面整理。
+        </p>
+        <p>
+          造型上选择六边形单元，是因为它既有建筑几何感，也便于通过不同高度组合出层次变化。前侧加入浮雕文字后，
+          整件作品既保留了简洁现代的几何外观，又体现出校庆纪念的主题属性。
+        </p>
+        <div class="quote">
+          设计关键词：交大校庆、几何拼接、桌面收纳、可打印、纪念属性与实用属性融合。
+        </div>
+      </section>
+
+      <section id="modeling" class="section">
+        <h2>建模过程</h2>
+        <ol class="timeline">
+          <li>
+            <strong>方案构思</strong>
+            <p>先确定作品不是纯摆件，而是带有使用场景的文创笔筒，明确“多仓位 + 校庆文字”的总体方向。</p>
+          </li>
+          <li>
+            <strong>基础单元建立</strong>
+            <p>以六边形为基础轮廓，建立不同高度的中空容器单元，再进行组合拼接。</p>
+          </li>
+          <li>
+            <strong>功能布局调整</strong>
+            <p>通过高低错落的仓体安排，实现“长笔收纳区 + 小物件收纳区”的复合桌面使用方式。</p>
+          </li>
+          <li>
+            <strong>文字元素融入</strong>
+            <p>在正面和侧面加入“1896”“西南交通大学”“130周年校庆”“2026”等文字，提高纪念辨识度。</p>
+          </li>
+          <li>
+            <strong>导出与切片检查</strong>
+            <p>导出 STL 后进行切片预览，检查壁厚、悬空面、文字区域和整体可打印性，确认模型适合直接打印。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section id="gallery" class="section">
+        <h2>过程与成品展示</h2>
+        <div class="gallery">
+          <figure class="gallery__item gallery__item--wide">
+            <img src="../照片/origin.png" alt="模型切片正视图">
+            <figcaption>切片预览图：可以看到校庆文字被整合在正面表面。</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="../照片/origin%20(2).png" alt="模型俯视截图">
+            <figcaption>模型俯视结构：五个六边形仓位组合成完整收纳区。</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="../照片/origin%20(5).png" alt="模型背面网格截图">
+            <figcaption>结构截图：背侧斜面与文字区域的建模细节。</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="../照片/origin%20(4).png" alt="模型底部网格截图">
+            <figcaption>模型底部观察：一体化拼接结构便于整体打印成型。</figcaption>
+          </figure>
+          <figure class="gallery__item gallery__item--tall">
+            <img src="../照片/origin.jpg" alt="打印成品整体照片">
+            <figcaption>打印成品正面：已完成实际打印，整体造型与分仓功能清晰。</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="../照片/origin%20(2).jpg" alt="打印成品俯视照片">
+            <figcaption>俯视照片：各仓位开口尺寸和内部空间一目了然。</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="../照片/origin%20(1).jpg" alt="打印成品背面照片">
+            <figcaption>背面照片：能看到表面层纹及文字打印后的真实效果。</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="printing" class="section">
+        <h2>打印分析</h2>
+        <div class="split">
+          <div class="panel">
+            <h3>可行性分析</h3>
+            <ul>
+              <li>模型体积较小，整体尺寸适合常见桌面级打印机一次成型。</li>
+              <li>主体为中空容器结构，打印逻辑清晰，便于快速验证设计。</li>
+              <li>多单元连体设计增强了整体稳定性，也减少了后期拼装步骤。</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>从照片观察到的结果</h3>
+            <ul>
+              <li>整体形态已经成功成型，结构完整，功能分区明确。</li>
+              <li>表面层纹较均匀，说明主体几何结构适合打印。</li>
+              <li>文字区域存在一定毛边和局部不够清晰的问题，是后续优化重点。</li>
+            </ul>
+          </div>
+        </div>
+        <table class="spec">
+          <tbody>
+            <tr>
+              <th>作品名称</th>
+              <td>百卅交大组合式文创笔筒</td>
+            </tr>
+            <tr>
+              <th>作品类别</th>
+              <td>功能性文创 / 3D打印桌面收纳</td>
+            </tr>
+            <tr>
+              <th>建模文件</th>
+              <td>SLDPRT、STL</td>
+            </tr>
+            <tr>
+              <th>尺寸限制符合情况</th>
+              <td>满足 200 mm × 200 mm × 200 mm 以内要求</td>
+            </tr>
+            <tr>
+              <th>本次实测包络尺寸</th>
+              <td>66.56 mm × 45.00 mm × 41.93 mm</td>
+            </tr>
+            <tr>
+              <th>主题元素</th>
+              <td>西南交通大学、1896、2026、130周年校庆</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="improve" class="section">
+        <h2>改进方向</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>文字优化</h3>
+            <p>
+              目前浮雕文字在实物中出现毛边，后续可以通过增大笔画宽度、减少过小细节、适当调整文字凸起高度来提升可读性。
+            </p>
+          </article>
+          <article class="card">
+            <h3>表面质量提升</h3>
+            <p>
+              对斜面和转角过渡处可以继续优化面数与外轮廓处理方式，减少局部细小打印痕迹，让成品更精致。
+            </p>
+          </article>
+          <article class="card">
+            <h3>校庆元素深化</h3>
+            <p>
+              如果继续迭代，可考虑加入校徽轮廓、校门线稿或建筑剪影，让作品与校园文化的联系更直观、更有辨识度。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="files" class="section">
+        <h2>提交文件</h2>
+        <p>本项目当前已整理的可提交材料如下：</p>
+        <ul class="files">
+          <li><a href="../笔筒.SLDPRT">笔筒.SLDPRT</a>：SolidWorks 建模源文件</li>
+          <li><a href="../笔筒.STL">笔筒.STL</a>：3D打印使用模型文件</li>
+          <li><a href="../作业要求.txt">作业要求.txt</a>：项目作业文字要求</li>
+          <li><a href="../照片/origin.jpg">打印成品照片</a>：作品实拍图</li>
+          <li><a href="../照片/origin.png">模型截图</a>：切片/建模展示图</li>
+        </ul>
+        <p class="footnote">
+          说明：本页面参考了项目记录型网页的组织方式，重点突出“设计目标、建模过程、打印结果和改进分析”，
+          便于作为课程 HTML 日志中的 3D 设计与 3D 打印板块直接使用。
+        </p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
