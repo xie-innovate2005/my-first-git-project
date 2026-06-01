@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PCB2 - TP4056充电板</title>
+  <link rel="stylesheet" href="../../html/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="eyebrow">PCB2 / TP4056 Charger</p>
+      <h1>TP4056 锂电池充电板复刻与分析</h1>
+      <p class="lead">
+        本项目围绕 TP4056 线性锂电池充电芯片展开，任务包括复刻原理图、学习芯片管脚功能、
+        完成 PCB 布局记录，并整理成一份结构完整的 HTML 设计日志。
+      </p>
+      <div class="meta">
+        <span>芯片：TP4056</span>
+        <span>任务：原理图 + PCB + 管脚功能表</span>
+        <span>重点：输入输出布局、GND 铺铜、设计规范</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <aside class="toc">
+      <h2>目录</h2>
+      <a href="../../html/index.html">返回 PCB 总页</a>
+      <a href="#requirements">作业要求</a>
+      <a href="#schematic">电路理解</a>
+      <a href="#pins">管脚功能</a>
+      <a href="#layout">布局与记录</a>
+      <a href="#files">文件清单</a>
+    </aside>
+
+    <div>
+      <section id="requirements" class="section">
+        <h2>作业要求</h2>
+        <p>
+          当前文件夹中的要求主要包括：复刻 TP4056 充电电路、阅读对应器件资料、整理管脚功能表、
+          完成原理图和 PCB 布局设计、做网络检查与 DRC 检查，并导出制板文件。
+        </p>
+        <div class="pill-list">
+          <span>复刻原理图</span>
+          <span>整理管脚功能表</span>
+          <span>规范布局布线</span>
+          <span>VCC 适当实线填充</span>
+          <span>GND 全板铺铜</span>
+          <span>提交三张截图</span>
+        </div>
+      </section>
+
+      <section id="schematic" class="section">
+        <h2>电路理解</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>输入部分</h3>
+            <p>
+              电路从 Mini USB 接口引入 5V 输入，VCC 经电阻和去耦电容后送入 TP4056，
+              为后续恒流恒压充电提供输入电源。
+            </p>
+          </article>
+          <article class="card">
+            <h3>电池部分</h3>
+            <p>
+              BAT 引脚连接电池接口，承担对单节锂电池的充电输出；电池侧同样配置了电容，
+              用于稳定输出并减小电压波动。
+            </p>
+          </article>
+          <article class="card">
+            <h3>状态指示</h3>
+            <p>
+              CHRG# 和 STDBY# 两个状态输出脚分别配合 LED 指示“正在充电”和“充电完成”，
+              这是教学电路中很直观的状态显示方式。
+            </p>
+          </article>
+          <article class="card">
+            <h3>电阻与电容作用</h3>
+            <p>
+              PROG 脚外接电阻决定充电电流；输入端和电池端的电容主要起到滤波、去耦和抑制瞬态干扰的作用，
+              让芯片工作更稳定。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="pins" class="section">
+        <h2>TP4056 管脚功能梳理</h2>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>TEMP</th>
+              <td>电池温度检测引脚，可接 NTC 进行过温保护，也可按应用场景做相应处理。</td>
+            </tr>
+            <tr>
+              <th>PROG</th>
+              <td>充电电流设定引脚，通过外接电阻到 GND 设置充电电流，是参数调节的核心引脚。</td>
+            </tr>
+            <tr>
+              <th>GND</th>
+              <td>电源与信号公共参考地，也是整板铺铜网络的基础。</td>
+            </tr>
+            <tr>
+              <th>VCC</th>
+              <td>电源输入引脚，对应 USB 5V 输入，通常需要配合输入侧滤波电容使用。</td>
+            </tr>
+            <tr>
+              <th>BAT</th>
+              <td>电池连接引脚，接锂电池正极，承担充电输出通路。</td>
+            </tr>
+            <tr>
+              <th>STDBY#</th>
+              <td>充电完成状态输出，低电平有效，可用于点亮充满指示灯。</td>
+            </tr>
+            <tr>
+              <th>CHRG#</th>
+              <td>充电状态输出，低电平有效，可用于点亮充电中指示灯。</td>
+            </tr>
+            <tr>
+              <th>CE</th>
+              <td>芯片使能引脚，用于控制芯片工作状态。</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          现有截图里已经把这部分内容整理成了表格，因此页面中继续沿用“先理解功能，再回看电路连接”的组织方式，
+          更适合作为学习记录展示。
+        </p>
+      </section>
+
+      <section id="layout" class="section">
+        <h2>布局与记录展示</h2>
+        <div class="gallery">
+          <figure class="wide">
+            <img src="../origin (1).jpg" alt="原理图截图">
+            <figcaption>原理图截图：左侧为接口与安装孔相关电路，右侧为 TP4056 主控充电电路。</figcaption>
+          </figure>
+          <figure>
+            <img src="../origin.jpg" alt="元件列表截图">
+            <figcaption>元件列表截图：展示了芯片、USB 接口、LED、电阻、电容和安装孔等器件信息。</figcaption>
+          </figure>
+          <figure>
+            <img src="../origin.png" alt="原理图细节截图">
+            <figcaption>原理图细节图：更清楚地展示了 VCC、BAT、PROG、CHRG#、STDBY# 等关键连接。</figcaption>
+          </figure>
+          <figure>
+            <img src="../origin (2).jpg" alt="管脚功能表截图">
+            <figcaption>管脚功能表截图：已完成主要管脚名称与功能说明的整理。</figcaption>
+          </figure>
+          <figure>
+            <img src="../origin (1).png" alt="PCB布局截图">
+            <figcaption>PCB 布局截图：展示输入输出接口靠边摆放、走线关系和板框范围。</figcaption>
+          </figure>
+        </div>
+        <ol class="timeline">
+          <li>
+            <strong>从原理图到布局</strong>
+            <p>
+              布局阶段应先明确 USB 输入、电池输出和指示灯位置，再围绕 TP4056 主芯片展开，保证信号方向清晰。
+            </p>
+          </li>
+          <li>
+            <strong>从布局到布线</strong>
+            <p>
+              电源线应尽量短而清晰，GND 推荐整板铺铜；输入输出器件放板边，可以让焊接和使用更方便。
+            </p>
+          </li>
+          <li>
+            <strong>从设计到提交</strong>
+            <p>
+              现有材料已经较完整地保留了学习过程，后续如果需要作为最终提交材料，还可以继续补充 Gerber 导出文件和 DRC 结果截图。
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <section id="files" class="section">
+        <h2>文件清单</h2>
+        <ul class="files">
+          <li><a href="../作业要求.txt">作业要求.txt</a></li>
+          <li><a href="../origin (1).jpg">原理图总览截图</a></li>
+          <li><a href="../origin.png">原理图细节截图</a></li>
+          <li><a href="../origin (2).jpg">TP4056 管脚功能表截图</a></li>
+          <li><a href="../origin.jpg">元件列表截图</a></li>
+          <li><a href="../origin (1).png">PCB 布局截图</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

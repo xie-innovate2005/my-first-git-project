@@ -1,0 +1,23 @@
+1.复刻原理图；
+
+tp4056选型时可直接考虑选有散热片的（立创商城商品编号C16581）；
+
+阅读C16581的数据手册（https://item.szlcsc.com/datasheet/TP4056-42-ESOP8/17264.html?spm=sc.gbn.xds.a___sc.hm.hd.ss&lcsc_vid=QQBfBgJTTgJYBgVSQAVcAVUEQlkPXlZTQQVdV1AFFAcxVlNRT1FcUlxeQVVdXjtW&alichlgref=https%3A%2F%2Fso.szlcsc.com%2F），绘制C16581的管脚功能表格，结合其典型应用电路，用自己的语言简述每个管脚的功能，分析电阻的选型和电容的作用。
+
+2.bat为网络标签；MINI _USB-B在用户贡献库；
+
+3.原理图画完进行网络检查；
+
+4.pcb图布局，要求布局规范，信号走向清晰，输入输出元件置于板边，排列整齐，版面紧凑，边框层设计为圆角矩形；
+
+4.pcb布线，vcc线进行适当的实线填充；全板铺铜，铺铜网络设置为GND网络；
+
+5.DRC检查，优化；
+
+6.导出Gerber文件（制造-PCB制版文件）；
+
+7.作业要求交三张截图：原理图+pcb图+管脚功能表；
+
+8.在一周内完成；
+
+9.独立完成绘图任务；
