@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>焊接板子记录</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="eyebrow">HTML日志 / Soldering</p>
+      <h1>焊接板子实践记录</h1>
+      <p class="lead">
+        本页整理的是开发板焊接与成品检查记录。当前照片材料展示了两块已焊接完成的 ESP32 小板，
+        包括正反面外观、排针焊接情况以及 USB 接口和按键区域的完成效果，可作为焊接实践板块的课程日志。
+      </p>
+      <div class="meta">
+        <span>对象：ESP32 小板焊接</span>
+        <span>内容：正反面检查</span>
+        <span>材料：4 张实拍照片</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <aside class="toc">
+      <h2>目录</h2>
+      <a href="#overview">实践概述</a>
+      <a href="#inspect">焊接检查</a>
+      <a href="#gallery">照片展示</a>
+      <a href="#summary">总结反思</a>
+    </aside>
+
+    <div>
+      <section id="overview" class="section">
+        <h2>实践概述</h2>
+        <div class="grid-3">
+          <article class="card">
+            <h3>实践目标</h3>
+            <p>
+              通过手工焊接排针与开发板接口，熟悉基础电子装配流程，并在焊接完成后对焊点、接口和板面状态进行检查。
+            </p>
+          </article>
+          <article class="card">
+            <h3>当前成果</h3>
+            <p>
+              照片中已经可以看到开发板正反面与焊接后的排针状态，说明基本焊接工作已经完成，能够用于后续插接和实验。
+            </p>
+          </article>
+          <article class="card">
+            <h3>页面作用</h3>
+            <p>
+              这个 HTML 页的重点不是讲原理图，而是把“焊接过程结果”和“成品检查”整理成一份清楚的实践记录。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="inspect" class="section">
+        <h2>焊接检查记录</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>正面观察</h3>
+            <p>
+              从正面照片可以看到主控芯片、USB 接口、复位/功能按键和排针区域，整体元件安装完整，
+              板面没有明显缺件，排针已焊接到位。
+            </p>
+          </article>
+          <article class="card">
+            <h3>背面观察</h3>
+            <p>
+              背面可用于重点检查焊点形状和排针排列是否整齐。当前照片里多数焊点已经成形，
+              能满足基础连接需求，后续仍可继续提升焊点一致性和美观度。
+            </p>
+          </article>
+          <article class="card">
+            <h3>接口检查</h3>
+            <p>
+              USB-C 接口和按键区域外观完整，没有明显偏位或焊桥现象，说明装配结果较稳定，具备上电和下载的基础条件。
+            </p>
+          </article>
+          <article class="card">
+            <h3>后续建议</h3>
+            <p>
+              如果继续完善，可以补充上电测试照片或串口识别截图，这样整份焊接记录会从“外观完成”进一步升级为“功能验证完成”。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="gallery" class="section">
+        <h2>照片展示</h2>
+        <div class="gallery">
+          <figure>
+            <img src="../照片/1fe86e0d0808a8be5776ce80636edc5a.jpg" alt="紫色开发板正面">
+            <figcaption>紫色开发板正面：可见 USB 接口、主控芯片与排针焊接完成情况。</figcaption>
+          </figure>
+          <figure>
+            <img src="../照片/d218a8d9d8638bcd72de344350a33b38.jpg" alt="紫色开发板背面">
+            <figcaption>紫色开发板背面：主要用于检查排针标识与背面焊接位置。</figcaption>
+          </figure>
+          <figure>
+            <img src="../照片/55f380180633306e9b8f0de71d285176.jpg" alt="蓝色开发板正面">
+            <figcaption>蓝色开发板正面：可见芯片、按键、USB 接口与焊点整体状态。</figcaption>
+          </figure>
+          <figure>
+            <img src="../照片/5435e5485366609be8b2699ec7bd9af6.jpg" alt="蓝色开发板背面">
+            <figcaption>蓝色开发板背面：适合观察丝印、引脚定义和排针排布情况。</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="summary" class="section">
+        <h2>总结反思</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>实践收获</h3>
+            <p>
+              焊接板子看似基础，但它直接影响后续实验是否稳定。通过这次实践，可以更直观地理解“排针垂直度、焊点完整度、接口可靠性”对开发板使用的重要性。
+            </p>
+          </article>
+          <article class="card">
+            <h3>可补充内容</h3>
+            <p>
+              后续若要进一步提升提交质量，可以继续补充通电测试、串口识别、程序下载成功等验证截图，形成“焊接完成 + 功能正常”的完整链路。
+            </p>
+          </article>
+        </div>
+        <ul class="files">
+          <li><a href="../照片/1fe86e0d0808a8be5776ce80636edc5a.jpg">照片 1</a></li>
+          <li><a href="../照片/5435e5485366609be8b2699ec7bd9af6.jpg">照片 2</a></li>
+          <li><a href="../照片/55f380180633306e9b8f0de71d285176.jpg">照片 3</a></li>
+          <li><a href="../照片/d218a8d9d8638bcd72de344350a33b38.jpg">照片 4</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
