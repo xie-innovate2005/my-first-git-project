@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>嵌入式入门学习日志</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="eyebrow">HTML日志 / Embedded Basics</p>
+      <h1>嵌入式入门学习记录</h1>
+      <p class="lead">
+        本目录整理的是嵌入式入门阶段的基础实验学习内容，已经按模块拆分为 8 个独立实验，
+        覆盖 <code>HelloWorld</code>、数字输入输出、模拟输入输出、WiFi、舵机控制等内容。
+        本页将这些代码、课程模块图和学习日志整合成一个可直接提交的 HTML 记录页。
+      </p>
+      <div class="meta">
+        <span>8 个基础实验</span>
+        <span>每个实验独立 .ino</span>
+        <span>附学习日志与课程模块图</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <aside class="toc">
+      <h2>目录</h2>
+      <a href="#overview">课程概览</a>
+      <a href="#modules">模块安排</a>
+      <a href="#code">代码文件</a>
+      <a href="#summary">学习总结</a>
+      <a href="#files">文件清单</a>
+    </aside>
+
+    <div>
+      <section id="overview" class="section">
+        <h2>课程概览</h2>
+        <div class="grid-3">
+          <article class="card">
+            <h3>学习目标</h3>
+            <p>
+              从最基础的串口输出和 LED 控制开始，逐步掌握 GPIO、ADC、PWM、WiFi 和舵机等常见嵌入式基础能力。
+            </p>
+          </article>
+          <article class="card">
+            <h3>材料组织</h3>
+            <p>
+              当前文件夹已经将每个实验拆成独立子目录，避免把所有示例混在一个文件里，更适合课程提交和后续复习。
+            </p>
+          </article>
+          <article class="card">
+            <h3>页面作用</h3>
+            <p>
+              本页相当于嵌入式入门板块的 HTML 入口页，便于集中展示实验目录、代码文件和文字学习记录。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="modules" class="section">
+        <h2>模块安排</h2>
+        <div class="gallery">
+          <figure class="wide">
+            <img src="../77d7f47b93e50ef8b6148fc68233901f.png" alt="课程模块二维码图">
+            <figcaption>课程模块图：包括 E1 到 E8 的基础实验，学习路径从入门到综合应用逐步展开。</figcaption>
+          </figure>
+        </div>
+        <div class="grid-2">
+          <article class="card"><h3>E1 HelloWorld</h3><p>完成开发环境联通与串口输出，是整个入门实验的起点。</p></article>
+          <article class="card"><h3>E2 数字输出闪灯</h3><p>通过 LED 闪烁理解最基础的 GPIO 输出控制。</p></article>
+          <article class="card"><h3>E3 数字输入按键</h3><p>学习读取按键输入，并根据输入状态控制输出。</p></article>
+          <article class="card"><h3>E4 模拟输出呼吸灯</h3><p>通过 PWM 实现 LED 亮度渐变，建立模拟输出概念。</p></article>
+          <article class="card"><h3>E5 模拟输入光敏</h3><p>读取光敏电阻的模拟值，体验传感器输入采样。</p></article>
+          <article class="card"><h3>E6 WiFi</h3><p>完成 ESP32 联网初始化，为后续远程控制做准备。</p></article>
+          <article class="card"><h3>E7 控制舵机</h3><p>理解舵机角度控制与 PWM 驱动关系。</p></article>
+          <article class="card"><h3>E8 WiFi 舵机</h3><p>把联网能力和执行器控制结合起来，形成综合案例。</p></article>
+        </div>
+      </section>
+
+      <section id="code" class="section">
+        <h2>代码文件</h2>
+        <ul class="files">
+          <li><a href="../E1_HelloWorld/E1_HelloWorld.ino">E1_HelloWorld.ino</a></li>
+          <li><a href="../E2_数字输出_闪灯/E2_数字输出_闪灯.ino">E2_数字输出_闪灯.ino</a></li>
+          <li><a href="../E3_数字输入_按键/E3_数字输入_按键.ino">E3_数字输入_按键.ino</a></li>
+          <li><a href="../E4_模拟输出_呼吸灯/E4_模拟输出_呼吸灯.ino">E4_模拟输出_呼吸灯.ino</a></li>
+          <li><a href="../E5_模拟输入_光敏电阻感受光/E5_模拟输入_光敏电阻感受光.ino">E5_模拟输入_光敏电阻感受光.ino</a></li>
+          <li><a href="../E6_WiFi/E6_WiFi.ino">E6_WiFi.ino</a></li>
+          <li><a href="../E7_控制舵机/E7_控制舵机.ino">E7_控制舵机.ino</a></li>
+          <li><a href="../E8_WiFi舵机/E8_WiFi舵机.ino">E8_WiFi舵机.ino</a></li>
+        </ul>
+      </section>
+
+      <section id="summary" class="section">
+        <h2>学习总结</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>知识线索</h3>
+            <p>
+              从串口输出、点灯和按键，到 PWM、ADC、WiFi 和舵机，课程本质上是在帮助建立“输入 - 处理 - 输出 - 通信”的嵌入式系统思维。
+            </p>
+          </article>
+          <article class="card">
+            <h3>提交材料</h3>
+            <p>
+              当前除了代码文件外，还已经有一份较详细的学习日志，因此这个 HTML 页更适合作为总入口和目录展示。
+            </p>
+          </article>
+        </div>
+        <p><a href="../嵌入式入门学习日志.md">查看已有学习日志（Markdown）</a></p>
+      </section>
+
+      <section id="files" class="section">
+        <h2>文件清单</h2>
+        <ul class="files">
+          <li><a href="../77d7f47b93e50ef8b6148fc68233901f.png">课程模块图</a></li>
+          <li><a href="../嵌入式入门学习日志.md">嵌入式入门学习日志.md</a></li>
+          <li><a href="../E1_HelloWorld/">E1_HelloWorld</a> 至 <a href="../E8_WiFi舵机/">E8_WiFi舵机</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
