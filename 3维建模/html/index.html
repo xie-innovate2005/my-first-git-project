@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3维建模项目日志</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="eyebrow">HTML日志 / 3D Modeling</p>
+      <h1>西南交通大学校门主题三维建模</h1>
+      <p class="lead">
+        本项目以西南交通大学建筑元素为主题，围绕“校门纪念模型”展开三维设计。现有文件中包含
+        <code>.SLDPRT</code>、<code>.STL</code>、<code>.3mf</code> 和从 3mf 中提取出的预览图，
+        因此本页将重点整理设计主题、模型文件、预览效果和尺寸信息，形成可提交的 HTML 日志页面。
+      </p>
+      <div class="meta">
+        <span>主题：交大建筑元素</span>
+        <span>核心对象：西南交通大学校门</span>
+        <span>成果：建模文件 + 预览图</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <aside class="toc">
+      <h2>目录</h2>
+      <a href="#requirements">作业要求</a>
+      <a href="#idea">设计思路</a>
+      <a href="#preview">预览展示</a>
+      <a href="#models">模型信息</a>
+      <a href="#summary">总结反思</a>
+      <a href="#files">文件清单</a>
+    </aside>
+
+    <div>
+      <section id="requirements" class="section">
+        <h2>作业要求</h2>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>主题要求</th>
+              <td>献礼交大百卅，以学校建筑物为设计元素设计绘制一个作品。</td>
+            </tr>
+            <tr>
+              <th>提交内容</th>
+              <td>导出三维模型 <code>.stl</code> 格式，并上传设计完成的效果图。</td>
+            </tr>
+            <tr>
+              <th>当前材料</th>
+              <td>目录内已包含源文件、多个 STL 文件、3mf 工程文件以及从 3mf 提取出的预览图片。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="idea" class="section">
+        <h2>设计思路</h2>
+        <div class="grid-3">
+          <article class="card">
+            <h3>题材选择</h3>
+            <p>
+              相比抽象符号，校门建筑具有更强的识别度，也能直接呼应“学校建筑物”为设计元素这一要求，
+              因此选择以西南交通大学校门为主要建模对象。
+            </p>
+          </article>
+          <article class="card">
+            <h3>表现方式</h3>
+            <p>
+              模型采用“建筑主体 + 底座”组合形式，既方便整体展示，也更适合作为纪念性建筑小摆件进行输出。
+            </p>
+          </article>
+          <article class="card">
+            <h3>主题强化</h3>
+            <p>
+              从预览图可以看到，底座前方还融入了“西南交通大学”文字，使作品不仅有建筑轮廓，也有明确的校名识别。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="preview" class="section">
+        <h2>预览展示</h2>
+        <div class="gallery">
+          <figure class="wide">
+            <img src="../preview/thumbnail_3mf.png" alt="3mf 缩略图预览">
+            <figcaption>3mf 自带缩略图：可以直接看到校门主体、底座和前侧文字区域的组合效果。</figcaption>
+          </figure>
+          <figure>
+            <img src="../preview/plate_1.png" alt="模型预览图">
+            <figcaption>模型预览图：以白模方式展示整体建筑造型和底座布局。</figcaption>
+          </figure>
+          <figure>
+            <img src="../preview/plate_no_light_1.png" alt="无光照预览图">
+            <figcaption>无光照预览：更方便观察模型轮廓和底座外形。</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="models" class="section">
+        <h2>模型信息</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>主模型文件</h3>
+            <p>
+              <code>西南交通大学校门.STL</code> 的外形尺寸约为
+              <strong>176.93 mm × 100.61 mm × 10.00 mm</strong>，
+              说明它更像是以校门为主体的主要展示模型。
+            </p>
+          </article>
+          <article class="card">
+            <h3>辅助模型文件</h3>
+            <p>
+              <code>_1.STL</code> 的外形尺寸约为
+              <strong>50.80 mm × 50.80 mm × 33.41 mm</strong>，
+              可视作当前项目中的补充模型文件，用于保留不同阶段或不同结构方案。
+            </p>
+          </article>
+        </div>
+        <p>
+          此外，目录中的 <code>西南交通大学.3mf</code> 保存了更完整的工程预览信息，
+          包括缩略图、打印板视图和模型展示图，对 HTML 日志记录非常有帮助。
+        </p>
+      </section>
+
+      <section id="summary" class="section">
+        <h2>总结反思</h2>
+        <div class="grid-2">
+          <article class="card">
+            <h3>作品优点</h3>
+            <p>
+              建筑主题明确，校门造型具有较强识别度；同时模型与文字底座结合，使作品既有纪念意义，也适合作为展示件。
+            </p>
+          </article>
+          <article class="card">
+            <h3>可继续完善处</h3>
+            <p>
+              如果后续还要继续打磨，可以补充更多建模过程截图，例如草图、拉伸、阵列、倒角等过程，
+              让页面不仅展示结果，也更完整地体现建模过程。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="files" class="section">
+        <h2>文件清单</h2>
+        <ul class="files">
+          <li><a href="../作业要求.txt">作业要求.txt</a></li>
+          <li><a href="../_1.SLDPRT">_1.SLDPRT</a>：三维建模源文件</li>
+          <li><a href="../_1.STL">_1.STL</a>：导出的 STL 模型文件</li>
+          <li><a href="../西南交通大学校门.STL">西南交通大学校门.STL</a>：校门主题模型文件</li>
+          <li><a href="../西南交通大学.3mf">西南交通大学.3mf</a>：工程预览文件</li>
+          <li><a href="../preview/thumbnail_3mf.png">thumbnail_3mf.png</a>：3mf 缩略图</li>
+          <li><a href="../preview/plate_1.png">plate_1.png</a>：模型预览图</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
